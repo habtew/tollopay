@@ -1,67 +1,23 @@
-# ToloPay
+# c8vwqzTB
 
-ToloPay is a fast and secure online payment solution tailored for users in Ethiopia.
+Warning: Vite enforces using jsx syntax inside jsx/tsx files, so it will complain about that. Solution: rename `.js` files to `.jsx` :)
 
-## Table of Contents
+Quick start:
 
-1. [Introduction](#introduction)
-2. [Features](#features)
-3. [Getting Started](#getting-started)
-   - [Prerequisites](#prerequisites)
-   - [Installation](#installation)
-4. [Usage](#usage)
-5. [Technologies](#technologies)
-6. [Contributing](#contributing)
-7. [License](#license)
-8. [Contact](#contact)
+```
+$ npm install
+$ npm start
+````
 
-## Introduction
+Head over to https://vitejs.dev/ to learn more about using vite
+## About Scrimba
 
-ToloPay is designed to provide users in Ethiopia with a seamless and secure online payment experience. With features like instant money transfer, linking bank accounts, and real-time notifications, ToloPay aims to simplify financial transactions.
+At Scrimba our goal is to create the best possible coding school at the cost of a gym membership! 💜
+If we succeed with this, it will give anyone who wants to become a software developer a realistic shot at succeeding, regardless of where they live and the size of their wallets 🎉
+The Frontend Developer Career Path aims to teach you everything you need to become a Junior Developer, or you could take a deep-dive with one of our advanced courses 🚀
 
-## Features
+- [Our courses](https://scrimba.com/allcourses)
+- [The Frontend Career Path](https://scrimba.com/learn/frontend)
+- [Become a Scrimba Pro member](https://scrimba.com/pricing)
 
-- **Send Money:** Quickly send money to friends and family, both within the ToloPay system and to linked bank accounts.
-
-- **Receive Money:** Receive funds directly into your ToloPay wallet from other users or their linked bank accounts.
-
-- **Balance Overview:** View your current balance in both the linked bank account and the ToloPay wallet.
-
-- **Bank Account Integration:** Link your bank account for faster and more convenient transactions.
-
-- **Real-time Notifications:** Stay informed with instant notifications for successful transactions and account updates.
-
-- **Security:** ToloPay prioritizes the security of your transactions and personal information, using advanced encryption measures.
-
-## Getting Started
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/)
-- [MySQL](https://www.mysql.com/)
-
-### Installation
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/your-username/ToloPay.git
-2. Install dependencies:
-   ```npm install
-3. Set up the database:
-   ```
-   # Create the database
-   npm run db:create
-
-   # Run migrations
-   npm run db:migrate```
-## Usage
-```npm start
-
-
-## Technologies
-. Frontend: HTML, CSS, JavaScript
-. Backend: Node.js, Express.js
-. Database: MySQL
-. Additional Libraries: Figma for UI/UX design, Flask for backend APIs, PayPal API for international transactions.
-
+Happy Coding!

@@ -40,6 +40,13 @@ class User(db.Model):
         return '<user %r>' % self.email
 
 
+# Enable CORS for all routes
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
+
 @app.route('/')
 def hello():
     return 'Hello, world! This is a test route.'
@@ -47,12 +54,15 @@ def hello():
 # Signup Route
 @app.route('/signup', methods=['POST'])
 def signup():
+    print("op")
     data = request.json
     first_name = data.get('first_name')
     last_name = data.get('last_name')
     email = data.get('email')
     phone_number = data.get('phone_number')
     password = data.get('password')
+    print(data)
+    print("po")
 
     # Check if user already exists
     existing_user = User.query.filter_by(email=email).first()

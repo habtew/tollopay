@@ -45,7 +45,7 @@ class User(db.Model):
 def after_request(response):
     response.headers.add('Access-Control-Allow-Origin', '*')
     response.headers.add('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, HEAD')
-    response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+    response.headers.add('Access-Control-Allow-Headers', '*')
     return response
 
 

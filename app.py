@@ -4,6 +4,13 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import os
 
 app = Flask(__name__)
+
+DB_USERNAME = "newuser"
+DB_PASSWORD = "password"
+DB_HOST = "localhost"
+DB_PORT = "3308"
+DB_NAME = "tolopay"
+
 app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+mysqlconnector://{os.environ['DB_USERNAME']}:{os.environ['DB_PASSWORD']}@{os.environ['DB_HOST']}:{os.environ['DB_PORT']}/{os.environ['DB_NAME']}"
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

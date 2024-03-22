@@ -17,7 +17,7 @@ class User(db.Model):
     last_name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     phone_number = db.Column(db.String(15), unique=True, nullable=False)
-    password_hash = db.Column(db.String(128), nullable=False)
+    password_hash = db.Column(db.String(250), nullable=False)
     balance = db.Column(db.Float, default=0.0)  
 
     def set_password(self, password):
@@ -29,6 +29,11 @@ class User(db.Model):
 
     def __repr__(self):
         return '<user %r>' % self.email
+
+
+@app.route('/')
+def hello():
+    return 'Hello, world! This is a test route.'
 
 # Signup Route
 @app.route('/signup', methods=['POST'])
@@ -122,3 +127,6 @@ def send_money():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+

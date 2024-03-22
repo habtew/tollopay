@@ -3,9 +3,12 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
 from flask_cors import CORS 
+import logging
 app = Flask(__name__)
 CORS(app)
 
+logging.getLogger('flask_cors').level = logging.DEBUG
+logging.basicConfig(level=logging.INFO)
 DB_USERNAME = "newuser"
 DB_PASSWORD = "password"
 DB_HOST = "localhost"
@@ -13,7 +16,6 @@ DB_PORT = "3308"
 DB_NAME = "tolopay"
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+mysqlconnector://{os.environ['DB_USERNAME']}:{os.environ['DB_PASSWORD']}@{os.environ['DB_HOST']}:{os.environ['DB_PORT']}/{os.environ['DB_NAME']}"
-
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -44,7 +46,7 @@ class User(db.Model):
 @app.after_request
 def after_request(response):
     response.headers.add('Access-Control-Allow-Origin', '*')
-    response.headers.add('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, HEAD')
+    response.headers.add('Access-Control-Allow-Methods', '*')
     response.headers.add('Access-Control-Allow-Headers', '*')
     return response
 
@@ -104,6 +106,9 @@ def login():
 
 @app.route('/balance', methods=['POST'])
 def balance():
+    logging.info('Received balance request')
+    print(logging)
+    print("h")
     data = request.json
     email = data.get('email')
 

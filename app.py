@@ -92,8 +92,13 @@ def login():
     session['email'] = user.email
     print(session)
     
-    return jsonify({'message': 'Login successful', 'access_token': user.email})
+    # Create a response object
+    response = make_response(jsonify({'message': 'Login successful', 'access_token': user.email}))
 
+    # Set the cookie with SameSite attribute set to None
+    response.set_cookie("session", session, secure=True, samesite="None")
+
+    return response
 
 @app.route('/balance', methods=['GET'])
 def balance():

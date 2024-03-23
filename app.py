@@ -16,6 +16,9 @@ logging.getLogger('flask_cors').level = logging.DEBUG
 logging.basicConfig(level=logging.INFO)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+mysqlconnector://{os.environ['DB_USERNAME']}:{os.environ['DB_PASSWORD']}@{os.environ['DB_HOST']}:{os.environ['DB_PORT']}/{os.environ['DB_NAME']}"
+app.config['SESSION_COOKIE_SAMESITE'] = 'None'
+app.config['SESSION_COOKIE_SECURE'] = True
+
 
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -95,9 +98,6 @@ def login():
 
     # Create a response object
     response = make_response(jsonify({'message': 'Login successful', 'access_token': user.email}))
-
-    # Set the cookie with SameSite attribute set to None
-    response.set_cookie("session", session, secure=True, samesite="None")
 
     return response
 

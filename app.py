@@ -15,7 +15,10 @@ DB_HOST = "localhost"
 DB_PORT = "3308"
 DB_NAME = "tolopay"
 
-app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+mysqlconnector://{os.environ['DB_USERNAME']}:{os.environ['DB_PASSWORD']}@{os.environ['DB_HOST']}:{os.environ['DB_PORT']}/{os.environ['DB_NAME']}"
+#app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+mysqlconnector://{os.environ['DB_USERNAME']}:{os.environ['DB_PASSWORD']}@{os.environ['DB_HOST']}:{os.environ['DB_PORT']}/{os.environ['DB_NAME']}"
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://sql5693518:I1b74X3XsM@sql5.freemysqlhosting.net:3306/sql5693518'
+
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -45,7 +48,7 @@ class User(db.Model):
 # Enable CORS for all routes
 @app.after_request
 def after_request(response):
-    response.headers.add('Access-Control-Allow-Origin', '*')
+    #response.headers.add('Access-Control-Allow-Origin', '*')
     response.headers.add('Access-Control-Allow-Methods', '*')
     response.headers.add('Access-Control-Allow-Headers', '*')
     return response
@@ -106,11 +109,11 @@ def login():
 
 @app.route('/balance', methods=['POST'])
 def balance():
-    logging.info('Received balance request')
-    print(logging)
+    
     print("h")
     data = request.json
     email = data.get('email')
+    print(data)
 
     # Retrieve user from database
     user = User.query.filter_by(email=email).first()

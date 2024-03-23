@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
 from flask_cors import CORS 
+from flask import make_response
 import logging
 
 app = Flask(__name__)
@@ -91,7 +92,7 @@ def login():
     # Store user's email in session
     session['email'] = user.email
     print(session)
-    
+
     # Create a response object
     response = make_response(jsonify({'message': 'Login successful', 'access_token': user.email}))
 

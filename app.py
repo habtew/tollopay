@@ -1,12 +1,16 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, session, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
 from flask_cors import CORS 
 import logging
-app = Flask(__name__)
-CORS(app)
 
+app = Flask(__name__)
+from flask_cors import CORS
+
+cors = CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
+
+app.secret_key = "secret_key" 
 logging.getLogger('flask_cors').level = logging.DEBUG
 logging.basicConfig(level=logging.INFO)
 
@@ -33,18 +37,10 @@ class User(db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-
     def __repr__(self):
         return '<user %r>' % self.email
 
 
-# Enable CORS for all routes
-@app.after_request
-def after_request(response):
-    #response.headers.add('Access-Control-Allow-Origin', '*')
-    response.headers.add('Access-Control-Allow-Methods', '*')
-    response.headers.add('Access-Control-Allow-Headers', '*')
-    return response
 
 
 @app.route('/')
@@ -54,15 +50,12 @@ def hello():
 # Signup Route
 @app.route('/signup', methods=['POST'])
 def signup():
-    print("op")
     data = request.json
     first_name = data.get('first_name')
     last_name = data.get('last_name')
     email = data.get('email')
     phone_number = data.get('phone_number')
     password = data.get('password')
-    print(data)
-    print("po")
 
     # Check if user already exists
     existing_user = User.query.filter_by(email=email).first()
@@ -95,18 +88,21 @@ def login():
     if not user.check_password(password):
         return jsonify({'error': 'Incorrect password'}), 401
 
+    # Store user's email in session
+    session['email'] = user.email
+    print(session)
     
     return jsonify({'message': 'Login successful', 'access_token': user.email})
 
 
-
-@app.route('/balance', methods=['POST'])
+@app.route('/balance', methods=['GET'])
 def balance():
-    
-    print("h")
-    data = request.json
-    email = data.get('email')
-    print(data)
+    # Retrieve user's email from session
+    email = session.get('email')
+    print(email)
+    print(session)
+    if not email:
+        return jsonify({'error': 'No session found. Please login to check balance'}), 401
 
     # Retrieve user from database
     user = User.query.filter_by(email=email).first()
@@ -120,10 +116,16 @@ def balance():
 
 @app.route('/send-money', methods=['POST'])
 def send_money():
+    # Retrieve user's email from session
+    email = session.get('email')
+
+    if not email:
+        return jsonify({'error': 'No session found. Please login to send money'}), 401
+
     data = request.json
-    sender_email = data.get('sender_email')
+    sender_email = email  # Use the sender's email from session
     recipient_email = data.get('recipient_email')
-    amount = data.get('amount')
+    amount = int(data.get('amount'))
 
     # Retrieve sender and recipient from the database
     sender = User.query.filter_by(email=sender_email).first()
@@ -146,9 +148,12 @@ def send_money():
     return jsonify({'message': f'Successfully sent {amount} to {recipient_email}'})
 
 
+@app.route('/logout', methods=['GET'])
+def logout():
+    # Remove user's email from session
+    session.clear()
+    return jsonify({'message': 'Logout successful'})
+
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-

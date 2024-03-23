@@ -5,6 +5,7 @@ import os
 from flask_cors import CORS 
 from flask import make_response
 import logging
+from datetime import datetime
 
 app = Flask(__name__)
 from flask_cors import CORS
@@ -16,6 +17,8 @@ logging.getLogger('flask_cors').level = logging.DEBUG
 logging.basicConfig(level=logging.INFO)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+mysqlconnector://{os.environ['DB_USERNAME']}:{os.environ['DB_PASSWORD']}@{os.environ['DB_HOST']}:{os.environ['DB_PORT']}/{os.environ['DB_NAME']}"
+
+
 app.config['SESSION_COOKIE_SAMESITE'] = 'None'
 app.config['SESSION_COOKIE_SECURE'] = True
 
@@ -43,6 +46,16 @@ class User(db.Model):
 
     def __repr__(self):
         return '<user %r>' % self.email
+
+class Transaction(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    sender_email = db.Column(db.String(120), nullable=False)
+    recipient_email = db.Column(db.String(120), nullable=False)
+    amount = db.Column(db.Float, nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f"<TransactionHistory sender_email='{self.sender_email}' recipient_email='{self.recipient_email}' amount={self.amount} timestamp={self.timestamp}>"
 
 
 
@@ -151,8 +164,39 @@ def send_money():
     recipient.balance += amount
     db.session.commit()
 
+    # Record the transaction
+    transaction = Transaction(sender_email=sender_email, recipient_email=recipient_email, amount=amount, timestamp=datetime.utcnow())
+    db.session.add(transaction)
+    db.session.commit()
+
     return jsonify({'message': f'Successfully sent {amount} to {recipient_email}'})
 
+@app.route('/transaction-history', methods=['GET'])
+def transaction_history():
+    # Retrieve user's email from session
+    email = session.get('email')
+
+    if not email:
+        return jsonify({'error': 'No session found. Please login to view transaction history'}), 401
+
+    # Retrieve transactions involving the user
+    transactions = Transaction.query.filter((Transaction.sender_email == email) | (Transaction.recipient_email == email)).all()
+
+    # Serialize transactions to JSON
+    transaction_data = []
+    for transaction in transactions:
+        if transaction.sender_email == email:
+            amount = -transaction.amount  # If the user is the sender, show amount as negative
+        else:
+            amount = transaction.amount
+        transaction_data.append({
+            'sender_email': transaction.sender_email,
+            'recipient_email': transaction.recipient_email,
+            'amount': amount,
+            'timestamp': transaction.timestamp
+        })
+
+    return jsonify(transaction_data)
 
 @app.route('/logout', methods=['GET'])
 def logout():

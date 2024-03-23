@@ -9,15 +9,8 @@ CORS(app)
 
 logging.getLogger('flask_cors').level = logging.DEBUG
 logging.basicConfig(level=logging.INFO)
-DB_USERNAME = "newuser"
-DB_PASSWORD = "password"
-DB_HOST = "localhost"
-DB_PORT = "3308"
-DB_NAME = "tolopay"
 
-#app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+mysqlconnector://{os.environ['DB_USERNAME']}:{os.environ['DB_PASSWORD']}@{os.environ['DB_HOST']}:{os.environ['DB_PORT']}/{os.environ['DB_NAME']}"
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://sql5693518:I1b74X3XsM@sql5.freemysqlhosting.net:3306/sql5693518'
+app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+mysqlconnector://{os.environ['DB_USERNAME']}:{os.environ['DB_PASSWORD']}@{os.environ['DB_HOST']}:{os.environ['DB_PORT']}/{os.environ['DB_NAME']}"
 
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

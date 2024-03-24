@@ -1,0 +1,31 @@
+.pay-bills-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 10px;
+    gap: 10px;
+}
+
+.pay-bill-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.pay-bill-section p { 
+    font-size: 11px;
+    margin-top: 1px;
+}
+
+
+.bill-icon-box {
+    background-color: var(--color-mediumslateblue-100);
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    font-size: 1rem;
+  
+  }

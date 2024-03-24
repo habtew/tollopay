@@ -1,0 +1,45 @@
+.check-balance {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.check-balance .header{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: .5em;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
+.container-bank{
+  display: flex;
+  flex-direction: column;
+  background-color: green;
+}
+
+.container-bank .btn-check {
+  width: 100%;
+}
+
+.balance {
+  font-size: 2rem;
+}  
+
+.go-back{
+  align-self: flex-end;
+  padding: .8em;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  margin-right: 10px;
+  color: white;
+  background-color: var(--color-mediumslateblue-100);
+  cursor: pointer;
+}
+
+.go-back a{
+  text-decoration: none;
+  color: white;
+}

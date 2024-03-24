@@ -1,0 +1,94 @@
+.home-page { 
+  /* background-color: #05032A;
+  color: white */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px
+}
+
+.navbar{
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  box-shadow: rgba(99, 99, 99, 0.3) 0px 2px 8px 0px;
+}
+
+
+.profile-icon {
+  width: 50px;
+}
+
+.home-page .sign-up-screen-child {
+  position: absolute;
+  top: 80px;
+  border-radius: var(--br-21xl) var(--br-21xl) var(--br-21xl) 0;
+  background-color: rgba(108, 99, 255, 0.2);
+  /* width: 424px; */
+  width: 100%;
+  height: 650px;
+  z-index: -1;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+  margin-left: 10px;
+  font-size: .8rem;
+}
+
+.icon-container{
+  display: flex;
+  gap: 15px;
+  font-size: 1.8rem;
+  margin-right: 20px;
+  /* color: white; */
+}
+
+.habtamu {
+  color: var(--color-mediumslateblue-100);
+}
+
+.good-morning {
+  font-size: 2rem;
+  text-align: center;
+  margin: 20px;
+}
+.good-morning span {
+  color: var(--color-mediumslateblue-100);
+}
+
+.icon-box{
+  background-color: var(--color-mediumslateblue-100);
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.2rem;
+}
+.recieve-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+}
+
+.recieve-money{
+  font-size: 16px;
+}
+
+.recieve-account {
+  font-size: 18px;
+}
+
+
+
+
+
+
+
+/* will be edited */

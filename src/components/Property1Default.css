@@ -1,0 +1,31 @@
+.log-in,
+.property-1default-child {
+  position: absolute;
+  height: 100%;
+  top: 0;
+}
+.property-1default-child {
+  width: 100%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: var(--br-11xl);
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.log-in {
+  width: 79.39%;
+  left: 5.57%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.property-1default {
+  width: 359px;
+  height: 63px;
+  text-align: center;
+  font-size: var(--font-size-5xl);
+  color: var(--color-white);
+  font-family: var(--font-inter);
+}

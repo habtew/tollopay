@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
+
+body {
+  margin: 0 auto;
+  line-height: normal;
+  max-width: 440px;
+  background-color: lightgrey;
+  border: 10px solid black;
+  border-radius: 25px;
+}
+
+:root {
+  /* fonts */
+  --font-inter: Inter;
+  --font-poppins: Poppins;
+  --font-roboto: Roboto;
+
+  /* font sizes */
+  --font-size-base: 16px;
+  --font-size-5xl: 24px;
+  --font-size-xl: 20px;
+  --font-size-14xl: 33px;
+  --font-size-mini: 15px;
+  --font-size-3xl: 22px;
+
+  /* Colors */
+  --color-white: #fff;
+  --color-gainsboro: #d9d9d9;
+  --color-black: #000;
+  --color-mediumslateblue-100: #6c63ff;
+  --color-darkslategray: rgba(63, 61, 86, 0.5);
+  --color-gray-100: rgba(0, 0, 0, 0.44);
+
+  /* Paddings */
+  --padding-13xl: 32px;
+
+  /* Border radiuses */
+  --br-11xl: 30px;
+  --br-6xl: 25px;
+  --br-xl: 20px;
+  --br-21xl: 40px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}

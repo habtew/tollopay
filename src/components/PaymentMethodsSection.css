@@ -1,0 +1,22 @@
+.payment-method-container{
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.bank-detail{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.payment-title{
+  margin: 0;
+  text-align: left;
+  font-size: 2.5rem;
+}
+
+.bank-detail img{
+  width: 50px;
+}

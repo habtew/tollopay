@@ -1,0 +1,194 @@
+.vector-icon {
+  position: absolute;
+  height: 19.01%;
+  width: 10.23%;
+  top: 80.95%;
+  right: 0;
+  bottom: 0.04%;
+  left: 89.77%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.group-icon,
+.vector-icon1,
+.vector-icon2,
+.vector-icon3,
+.vector-icon4 {
+  position: absolute;
+  height: 0.45%;
+  width: 70.7%;
+  top: 99.55%;
+  right: 0.02%;
+  bottom: 0;
+  left: 29.28%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.group-icon,
+.vector-icon2,
+.vector-icon3,
+.vector-icon4 {
+  height: 87.32%;
+  width: 47.4%;
+  top: 12.58%;
+  right: 52.6%;
+  bottom: 0.1%;
+  left: 0;
+}
+.vector-icon2,
+.vector-icon3,
+.vector-icon4 {
+  height: 1.52%;
+  width: 27.14%;
+  top: 55.5%;
+  right: 62.72%;
+  bottom: 42.98%;
+  left: 10.14%;
+}
+.vector-icon3,
+.vector-icon4 {
+  height: 22.15%;
+  width: 21.26%;
+  top: 64.48%;
+  right: 65.58%;
+  bottom: 13.37%;
+  left: 13.16%;
+}
+.vector-icon4 {
+  height: 7.53%;
+  width: 4.26%;
+  top: 71.93%;
+  right: 74.07%;
+  bottom: 20.55%;
+  left: 21.67%;
+}
+.vector-icon5,
+.vector-icon6,
+.vector-icon7,
+.vector-icon8,
+.vector-icon9 {
+  position: absolute;
+  height: 9.86%;
+  width: 0.44%;
+  top: 71.14%;
+  right: 75.79%;
+  bottom: 19.01%;
+  left: 23.77%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.vector-icon6,
+.vector-icon7,
+.vector-icon8,
+.vector-icon9 {
+  height: 44.71%;
+  width: 59.4%;
+  top: 0;
+  right: 16.4%;
+  bottom: 55.29%;
+  left: 24.21%;
+}
+.vector-icon7,
+.vector-icon8,
+.vector-icon9 {
+  height: 12.23%;
+  width: 11.72%;
+  top: 10.04%;
+  right: 40.49%;
+  bottom: 77.73%;
+  left: 47.79%;
+}
+.vector-icon8,
+.vector-icon9 {
+  height: 6.21%;
+  width: 3.47%;
+  top: 13.41%;
+  right: 44.91%;
+  bottom: 80.39%;
+  left: 51.63%;
+}
+.vector-icon9 {
+  height: 8.13%;
+  width: 0.3%;
+  top: 12.76%;
+  right: 46.21%;
+  bottom: 79.11%;
+  left: 53.49%;
+}
+.group-girl-icon,
+.group-icon1,
+.vector-icon11,
+.vector-icon12,
+.vector-icon13 {
+  position: absolute;
+  height: 0.97%;
+  width: 23.3%;
+  top: 3.69%;
+  right: 34.44%;
+  bottom: 95.33%;
+  left: 42.26%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.group-girl-icon,
+.vector-icon11,
+.vector-icon12,
+.vector-icon13 {
+  height: 8.99%;
+  width: 45.28%;
+  top: 25.7%;
+  right: 23.44%;
+  bottom: 65.31%;
+  left: 31.28%;
+}
+.group-girl-icon,
+.vector-icon12,
+.vector-icon13 {
+  height: 11.64%;
+  width: 10.79%;
+  top: 31.42%;
+  right: 77.3%;
+  bottom: 56.94%;
+  left: 11.91%;
+}
+.group-girl-icon,
+.vector-icon13 {
+  height: 1.52%;
+  width: 11%;
+  top: 46.51%;
+  right: 78.91%;
+  bottom: 51.97%;
+  left: 10.09%;
+}
+.group-girl-icon {
+  height: 76.27%;
+  width: 32.86%;
+  top: 23.63%;
+  right: 15.33%;
+  bottom: 0.1%;
+  left: 51.81%;
+}
+.tollopay2 {
+  position: absolute;
+  height: 8.52%;
+  width: 40.93%;
+  top: 25.96%;
+  left: 30.7%;
+  display: inline-block;
+}
+.undraw-transfer-money-re-6o1h {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 430px;
+  height: 493px;
+  overflow: hidden;
+  text-align: center;
+  font-size: var(--font-size-14xl);
+  color: var(--color-white);
+  font-family: var(--font-inter);
+}

@@ -74,12 +74,13 @@ def signup():
     phone_number = data.get('phone_number')
     password = data.get('password')
 
-    # Check if user already exists
+    if not all([first_name, last_name, email, phone_number, password]):
+        return jsonify({'error': 'All fields are required'}), 400
+        
     existing_user = User.query.filter_by(email=email).first()
     if existing_user:
         return jsonify({'error': 'User with this email already exists'}), 400
 
-    # Create a new user record
     new_user = User(first_name=first_name, last_name=last_name, email=email, phone_number=phone_number,balance=0)
     new_user.set_password(password)
     db.session.add(new_user)
@@ -95,58 +96,47 @@ def login():
     email = data.get('email')
     password = data.get('password')
 
-    # Retrieve user from database
     user = User.query.filter_by(email=email).first()
 
     if not user:
         return jsonify({'error': 'User not found'}), 404
 
-    # Verify password
     if not user.check_password(password):
         return jsonify({'error': 'Incorrect password'}), 401
 
-    # Store user's email in session
     session['email'] = user.email
     print(session)
 
-    # Create a response object
-    response = make_response(jsonify({'message': 'Login successful', 'access_token': user.email}))
+    response = make_response(jsonify({'message': 'Login successful', 'access_token': user.email, 'first_name': user.first_name}))
 
     return response
 
 @app.route('/balance', methods=['GET'])
 def balance():
-    # Retrieve user's email from session
     email = session.get('email')
-    print(email)
-    print(session)
     if not email:
         return jsonify({'error': 'No session found. Please login to check balance'}), 401
 
-    # Retrieve user from database
     user = User.query.filter_by(email=email).first()
 
     if not user:
         return jsonify({'error': 'User not found'}), 404
 
-    # Return user's balance
     return jsonify({'email': user.email, 'balance': user.balance})
 
 
 @app.route('/send-money', methods=['POST'])
 def send_money():
-    # Retrieve user's email from session
     email = session.get('email')
 
     if not email:
         return jsonify({'error': 'No session found. Please login to send money'}), 401
 
     data = request.json
-    sender_email = email  # Use the sender's email from session
+    sender_email = email  
     recipient_email = data.get('recipient_email')
     amount = int(data.get('amount'))
 
-    # Retrieve sender and recipient from the database
     sender = User.query.filter_by(email=sender_email).first()
     recipient = User.query.filter_by(email=recipient_email).first()
 
@@ -155,11 +145,9 @@ def send_money():
     if not recipient:
         return jsonify({'error': 'Recipient not found'}), 404
 
-    # Check if sender has sufficient balance
     if sender.balance < amount:
         return jsonify({'error': 'Insufficient balance to send money'}), 400
 
-    # Update sender and recipient balances
     sender.balance -= amount
     recipient.balance += amount
     db.session.commit()
@@ -173,20 +161,18 @@ def send_money():
 
 @app.route('/transaction-history', methods=['GET'])
 def transaction_history():
-    # Retrieve user's email from session
     email = session.get('email')
 
     if not email:
         return jsonify({'error': 'No session found. Please login to view transaction history'}), 401
 
-    # Retrieve transactions involving the user
     transactions = Transaction.query.filter((Transaction.sender_email == email) | (Transaction.recipient_email == email)).all()
 
     # Serialize transactions to JSON
     transaction_data = []
     for transaction in transactions:
         if transaction.sender_email == email:
-            amount = -transaction.amount  # If the user is the sender, show amount as negative
+            amount = -transaction.amount  
         else:
             amount = transaction.amount
         transaction_data.append({
@@ -200,7 +186,6 @@ def transaction_history():
 
 @app.route('/logout', methods=['GET'])
 def logout():
-    # Remove user's email from session
     session.clear()
     return jsonify({'message': 'Logout successful'})
 

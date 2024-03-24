@@ -16,7 +16,6 @@
 .container-bank{
   display: flex;
   flex-direction: column;
-  background-color: green;
 }
 
 .container-bank .btn-check {

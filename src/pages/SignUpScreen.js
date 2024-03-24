@@ -1,8 +1,9 @@
 import "./SignUpScreen.css";
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import BACKEND_URL from "../config";
 import axios from "axios";
+
 
 const SignUpScreen = () => {
     const [formData, setFormData] = React.useState({
@@ -14,6 +15,7 @@ const SignUpScreen = () => {
       });
       const [successMessage, setSuccessMessage] = React.useState("");
       const [error, setError] = React.useState(null);
+      const navigate = useNavigate()
     
       function handleChange(event) {
         const { name, value } = event.target;
@@ -36,6 +38,7 @@ const SignUpScreen = () => {
             setSuccessMessage("User signed up successfully");
             alert("User signed up successfully")
             setError(null); // Clear any previous errors
+            navigate('/login')
             
           }
         } catch (error) {

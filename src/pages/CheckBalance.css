@@ -18,6 +18,10 @@
   flex-direction: column;
 }
 
+.btn-check {
+  cursor: pointer;
+}
+
 .container-bank .btn-check {
   width: 100%;
 }

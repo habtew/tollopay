@@ -51,7 +51,7 @@ const HomePage = () => {
           </div>
         </div>
       </nav>     
-      <div className="good-morning">Good Morning <span>Habtamu</span></div>
+      <div className="good-morning">Welcome to <span>TolloPay</span></div>
       <TransferMoneySection />
       
       <div className="recieve-container">

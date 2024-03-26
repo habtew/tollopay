@@ -57,7 +57,7 @@ const HomePage = () => {
       <div className="recieve-container">
         <div>
           <div className="recieve-money">Recieve Money</div>
-          <div className="recieve-account">habtamu@account.com</div>
+          <div className="recieve-account">myemail@account.com</div>
         </div>
         <FontAwesomeIcon icon={faGreaterThan} className="icon-box greator-icon" />
       </div>

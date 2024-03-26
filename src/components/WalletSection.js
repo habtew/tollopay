@@ -6,7 +6,7 @@ const WalletSection = () => {
     <div className="wallet-section-container">
       <div className="wallet-secontion">
         <FontAwesomeIcon icon={faWallet} className="wallet-icon-box notification-1-icon"/>
-        <p>Phonepe wallet</p>
+        <p>TolloPay wallet</p>
       </div>
       <div className="wallet-secontion">
         <FontAwesomeIcon icon={faGift} className="wallet-icon-box notification-1-icon"/>
